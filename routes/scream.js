@@ -8,7 +8,7 @@ const { auth } = require("./verifyToken");
 const { screamValidation } = require("../validation");
 
 router.get("/allscreams", async (req, res) => {
-	const allScreams = await Scream.find().sort({ date: 'descending' });
+	const allScreams = await Scream.find().sort({ date: "descending" });
 	if (!allScreams)
 		return res.status(500).json({ error: "No Scream avaliable" });
 	res.status(200).json(allScreams);
@@ -35,7 +35,7 @@ router.post("/addscream", auth, async (req, res) => {
 		const savedScream = await newScream.save();
 		res.status(200).json(newScream);
 	} catch (err) {
-		console.log(err)
+		console.log(err);
 		res.status(400).json({ error: err });
 	}
 });
